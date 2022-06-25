@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Header } from '../components/Header'
-import { Slidebar } from '../components/Slidebar'
+import { Sidebar } from '../components/Sidebar'
 import { Video } from '../components/Video'
 
 export const Event = () => {
@@ -12,7 +12,7 @@ export const Event = () => {
       <Header />
       <main className="flex flex-1">
         { slug ? <Video lessonSlug={slug} /> : <div className='flex-1'>Loading...</div> }
-        <Slidebar />
+        <Sidebar />
       </main>
     </div>
   )
