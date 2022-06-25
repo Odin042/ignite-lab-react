@@ -1,28 +1,22 @@
-import { gql, useMutation } from "@apollo/client";
-import React,{ FormEvent } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
 import { useCreateSubscriberMutation } from "../graphql/generated";
 
-
-
 export const Subscribe = () => {
   const navigate = useNavigate();
-  
 
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
 
-  const [createSubscribe,{loading}] = useCreateSubscriberMutation();
+  const [createSubscribe, { loading }] = useCreateSubscriberMutation();
 
-  
-
-  async function handleSubscribe(event: FormEvent){
+  async function handleSubscribe(event: FormEvent) {
     event.preventDefault();
-    
-    await createSubscribe({variables: {name, email}});
 
-    navigate('/event');
+    await createSubscribe({ variables: { name, email } });
+
+    navigate("/event");
   }
 
   return (
@@ -48,27 +42,30 @@ export const Subscribe = () => {
             Inscreva-se gratuitamente
           </strong>
 
-          <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full">
+          <form
+            onSubmit={handleSubscribe}
+            className="flex flex-col gap-2 w-full"
+          >
             <input
               className="bg-gray-900 rounded px-5 h-14"
               type="text"
               placeholder="Seu nome completo"
-              onChange = { event => setName(event.target.value) }
+              onChange={(event) => setName(event.target.value)}
             />
             <input
               className="bg-gray-900 rounded px-5 h-14"
               type="text"
               placeholder="Seu email"
-              onChange = { event => setEmail(event.target.value) }
+              onChange={(event) => setEmail(event.target.value)}
             />
 
             <button
               type="submit"
-              disabled = {loading}
+              disabled={loading}
               className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
-              >
-                Garanta sua vaga
-              </button>
+            >
+              Garanta sua vaga
+            </button>
           </form>
         </div>
       </div>
