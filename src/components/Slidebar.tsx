@@ -1,5 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
+
 import { useGetLessonsQuery } from "../graphql/generated";
 import { Lesson } from "./Lesson";
 
@@ -7,8 +6,7 @@ import { Lesson } from "./Lesson";
 
 export const Slidebar = () => {
   const { data } = useGetLessonsQuery()
-
-  console.log(data)
+  
 
   return (
     <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
@@ -30,7 +28,5 @@ export const Slidebar = () => {
     </aside>
   );
 };
-function useGetLesssonsQuery(): { data: any; } {
-  throw new Error("Function not implemented.");
-}
+
 
